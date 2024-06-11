@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from models import load_json, save_json, Aluno, Curos
+from models import load_json, save_json, Aluno, Curso
 import os 
 
 
@@ -28,8 +28,8 @@ def init_routes(app):
         return jsonify(alunos), 200
     
     @app.route('/cursos', methods=['POST'])
-    def creat_curso():
-        data = request.get_json
+    def create_curso():
+        data = request.get_json()
         cursos = load_json(cursos_file)
         
         novo_curso = Curso(id=len(cursos) + 1, nome=data['nome'])
